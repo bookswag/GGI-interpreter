@@ -1,11 +1,33 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"log"
+	"os"
 )
 
 func main() {
-	fmt.Println("HOLA")
-	log.Fatalf("Oh, no!")
+
+	file, err := os.Open("sample.txt")
+
+	if err != nil {
+		log.Fatalf("failed to open")
+	}
+
+	scanner := bufio.NewScanner(file)
+
+	scanner.Split(bufio.ScanLines)
+	var text []string
+
+	for scanner.Scan() {
+		text = append(text, scanner.Text())
+	}
+	file.Close()
+
+	for _, each_ln := range text {
+		fmt.Println(each_ln)
+		fmt.Println("HOLA")
+	}
+
 }
