@@ -4,5 +4,7 @@
 - but I wish to parse millions line & get performance with js generator
 
 # command
-> go mod init ggi
-> go build
+```bash
+$ go mod init ggi
+$ go build
+```
